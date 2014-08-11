@@ -1,0 +1,8 @@
+.DS_store
+
+# directories
+vendor/*
+
+# Composer
+composer.lock
+composer.phar

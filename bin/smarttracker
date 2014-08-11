@@ -1,0 +1,26 @@
+#!/usr/bin/env php
+<?php
+/**
+ * @package SmartTrackerConsole
+ * @author Keyser Söze
+ * @copyright Copyright (c) 2014 Keyser Söze
+ * Displays <a href="http://creativecommons.org/licenses/MIT/deed.fr">MIT</a>
+ * @license http://creativecommons.org/licenses/MIT/deed.fr MIT
+ */
+
+if (PHP_SAPI !== 'cli') {
+    echo sprintf(
+        "Warning: SmartTracker should be invoked via the CLI version of PHP, not the %s SAPI",
+        PHP_SAPI
+    ) . PHP_EOL;
+}
+
+require __DIR__ . '/../src/bootstrap.php';
+
+use SmartTracker\Console\Application;
+
+error_reporting(-1);
+
+// run the command application
+$application = new Application();
+$application->run();
