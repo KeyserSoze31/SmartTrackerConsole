@@ -72,7 +72,6 @@ class Compiler
         foreach ($finder as $file) {
             $this->addFile($phar, $file);
         }
-        $this->addFile($phar, new \SplFileInfo(__DIR__ . '/Autoload/ClassLoader.php'), false);
 
         $finder = new Finder();
         $finder->files()
@@ -105,7 +104,7 @@ class Compiler
         // disabled for interoperability with systems without gzip ext
         // $phar->compressFiles(\Phar::GZ);
 
-        $this->addFile($phar, new \SplFileInfo(__DIR__ . '/../../LICENSE'), false);
+        $this->addFile($phar, new \SplFileInfo(__DIR__ . '/../../LICENSE.md'), false);
 
         unset($phar);
     }
@@ -121,7 +120,7 @@ class Compiler
         $content = file_get_contents($file);
         if ($strip) {
             $content = $this->stripWhitespace($content);
-        } elseif ('LICENSE' === basename($file)) {
+        } elseif ('LICENSE.md' === basename($file)) {
             $content = "\n" . $content . "\n";
         }
 
